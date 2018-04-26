@@ -1,7 +1,8 @@
-import {users} from './data';
 import IUser from './models/user';
 
 import * as $ from 'jquery';
+
+let users: Array<IUser> = [];
 
 const containerDiv: JQuery<HTMLElement> = $('#container');
 const searchInput: JQuery<HTMLElement> = $('#myfilter');
@@ -29,5 +30,12 @@ searchInput.on('keyup', () => {
 
 });
 
-renderList(users);
+const userPromise: JQueryXHR = $.get('https://api.github.com/users');
+userPromise.then((res: Array<IUser>) => {
+    users = res;
+    renderList(users);
+}, () => {
+    console.log('errr');
+});
+
 

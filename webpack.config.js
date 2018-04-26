@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/app.ts',
   mode: 'development',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.js']
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
